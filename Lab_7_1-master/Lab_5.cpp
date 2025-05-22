@@ -65,6 +65,8 @@ glm::mat4 calculateModelMatrix(int index) {
         model = glm::translate(model, objectTransforms[2].pivotPoint);
         model = glm::rotate(model, glm::radians(objectTransforms[2].rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
         model = glm::translate(model, -objectTransforms[2].pivotPoint);
+
+        model = glm::translate(model, objectTransforms[3].position);
         return model;
     }
 
@@ -186,7 +188,6 @@ void processInput(GLFWwindow* window) {
         objectTransforms[2].rotation.x += rotateSpeed;
     if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
         objectTransforms[2].rotation.x -= rotateSpeed;
-   
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
